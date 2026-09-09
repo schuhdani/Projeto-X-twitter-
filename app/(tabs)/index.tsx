@@ -1,98 +1,299 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
-
-export default function HomeScreen() {
+export default function App() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View style={styles.tela}>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.esquerda}>
+
+        <Text style={styles.logo}>𝕏</Text>
+
+        <Text style={styles.menu}>🏠  Home</Text>
+        <Text style={styles.menu}>🔎  Explore</Text>
+        <Text style={styles.menu}>🖤  Notifications</Text>
+        <Text style={styles.menu}>👤  Follow</Text>
+        <Text style={styles.menu}>💬 Chat</Text>
+        <Text style={styles.menu}>✨  Grok</Text>
+        <Text style={styles.menu}>👤  Profile</Text>
+        <Text style={styles.menu}>...  More</Text>
+
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>Post</Text>
+        </View>
+
+
+        <Text style={styles.perfil}>Dani</Text>
+        <Text style={styles.usuario}>@dani</Text>
+
+      </View>
+
+      <View style={styles.meio}>
+
+        <View style={styles.abas}>
+          <Text style={styles.abaSelecionada}>For you</Text>
+          <Text style={styles.aba}>Following</Text>
+          <Text style={styles.aba}>Sports</Text>
+          <Text style={styles.aba}>Business</Text>
+          <Text style={styles.aba}>Tech</Text>
+        </View>
+
+        <View style={styles.publicacao}>
+
+          <Text style={styles.nome}>Dani</Text>
+
+          <Text style={styles.usuarioPost}>
+            @dani · 2h
+          </Text>
+
+          <Text style={styles.texto}>
+            Amo outer banks!!!
+          </Text>
+
+          <View style={styles.imagem}>
+            <Text style={styles.textoImagem}>
+              IMAGEM
+            </Text>
+          </View>
+
+          <Text style={styles.acoes}>
+            💬     🔁     ♡     📊     ↗
+          </Text>
+
+        </View>
+
+      </View>
+
+      <View style={styles.direita}>
+
+        <View style={styles.pesquisa}>
+          <Text style={styles.textoPesquisa}>
+            🔍  Search
+          </Text>
+        </View>
+
+        <View style={styles.caixa}>
+
+          <Text style={styles.titulo}>
+            What's happening
+          </Text>
+
+          <Text style={styles.assunto}>
+            Nyeme
+          </Text>
+
+          <Text style={styles.assunto}>
+            Soteldo
+          </Text>
+
+          <Text style={styles.assunto}>
+            Renê
+          </Text>
+
+          <Text style={styles.mostrar}>
+            Show more
+          </Text>
+
+        </View>
+
+
+        <View style={styles.caixa}>
+
+          <Text style={styles.titulo}>
+            Who to follow
+          </Text>
+
+          <Text style={styles.assunto}>
+            Ana
+          </Text>
+
+          <Text style={styles.assunto}>
+            João
+          </Text>
+
+          <Text style={styles.mostrar}>
+            Show more
+          </Text>
+
+        </View>
+
+      </View>
+
+    </View>
   );
 }
 
+
 const styles = StyleSheet.create({
-  titleContainer: {
+
+  tela: {
+    flex: 1,
+    backgroundColor: 'black',
     flexDirection: 'row',
+  },
+
+  esquerda: {
+    width: 250,
+    padding: 20,
+    borderRightWidth: 1,
+    borderRightColor: '#333',
+  },
+
+  logo: {
+    color: 'white',
+    fontSize: 35,
+    marginBottom: 20,
+  },
+
+  menu: {
+    color: 'white',
+    fontSize: 18,
+    marginBottom: 20,
+  },
+
+  botao: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 30,
+    marginTop: 10,
+  },
+
+
+  textoBotao: {
+    color: 'black',
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
+  perfil: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 30,
+  },
+
+
+  usuario: {
+    color: 'gray',
+    fontSize: 14,
+  },
+
+
+  meio: {
+    width: 500,
+  },
+
+  abas: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: '#333',
+    padding: 15,
+  },
+
+
+  aba: {
+    color: 'gray',
+    marginRight: 20,
+  },
+
+
+  abaSelecionada: {
+    color: 'white',
+    fontWeight: 'bold',
+    marginRight: 20,
+  },
+
+  publicacao: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#333',
+  },
+
+
+  nome: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+
+
+  usuarioPost: {
+    color: 'gray',
+    marginBottom: 10,
+  },
+
+
+  texto: {
+    color: 'white',
+    fontSize: 16,
+    marginBottom: 15,
+  },
+
+
+  imagem: {
+    height: 250,
+    backgroundColor: '#222',
+    borderRadius: 15,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+
+
+  textoImagem: {
+    color: 'gray',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  acoes: {
+    color: 'gray',
+    fontSize: 18,
+    marginTop: 15,
   },
+
+
+  direita: {
+    flex: 1,
+    padding: 20,
+  },
+
+  pesquisa: {
+    backgroundColor: '#222',
+    padding: 12,
+    borderRadius: 25,
+  },
+
+
+  textoPesquisa: {
+    color: 'gray',
+    fontSize: 16,
+  },
+
+  caixa: {
+    backgroundColor: '#16181c',
+    padding: 20,
+    borderRadius: 15,
+    marginTop: 20,
+  },
+
+
+  titulo: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+
+
+  assunto: {
+    color: 'white',
+    fontSize: 16,
+    marginBottom: 15,
+  },
+
+
+  mostrar: {
+    color: '#1d9bf0',
+    marginTop: 5,
+  },
+
 });
