@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
   Image,
-  TouchableOpacity,
   ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 import { Stack, router } from 'expo-router';
@@ -28,14 +28,14 @@ export default function TabOneScreen() {
         <View style={styles.esquerda}>
           <Text style={styles.logo}>𝕏</Text>
 
-          <Text style={styles.menu}>🏠  Lar</Text>
+          <Text style={styles.menu}>🏠  Home</Text>
           <Text style={styles.menu}>🔎  Explore</Text>
-          <Text style={styles.menu}>🖤  Notificações</Text>
-          <Text style={styles.menu}>👤  Seguir</Text>
-          <Text style={styles.menu}>💬  Bate-papo</Text>
+          <Text style={styles.menu}>🖤  Notifcations</Text>
+          <Text style={styles.menu}>👤  Follow</Text>
+          <Text style={styles.menu}>💬  Chat</Text>
           <Text style={styles.menu}>✨  Grok</Text>
-          <Text style={styles.menu}>👤  Perfil</Text>
-          <Text style={styles.menu}>...  Mais</Text>
+          <Text style={styles.menu}>👤  Profile</Text>
+          <Text style={styles.menu}>...  More</Text>
 
           <View style={styles.botao}>
             <Text style={styles.textoBotao}>Publicar</Text>
