@@ -9,17 +9,20 @@ import {
   ScrollView,
 } from 'react-native';
 
-import { Stack, router } from 'expo-router';
+import {
+  Stack,
+  router,
+  useLocalSearchParams,
+} from 'expo-router';
 
-export default function TabOneScreen() {
+export default function Detalhe() {
+  const { nome } = useLocalSearchParams<{ nome: string }>();
+
   const [curtido, setCurtido] = useState(false);
-
-  function abrirDetalhes() {
-    router.push('/detalhe');
-  }
 
   return (
     <>
+      {/* ESCONDE O CABEÇALHO BRANCO */}
       <Stack.Screen options={{ headerShown: false }} />
 
       <View style={styles.tela}>
@@ -28,7 +31,10 @@ export default function TabOneScreen() {
         <View style={styles.esquerda}>
           <Text style={styles.logo}>𝕏</Text>
 
-          <Text style={styles.menu}>🏠  Lar</Text>
+          <TouchableOpacity onPress={() => router.replace('/')}>
+            <Text style={styles.menu}>🏠  Lar</Text>
+          </TouchableOpacity>
+
           <Text style={styles.menu}>🔎  Explore</Text>
           <Text style={styles.menu}>🖤  Notificações</Text>
           <Text style={styles.menu}>👤  Seguir</Text>
@@ -41,7 +47,7 @@ export default function TabOneScreen() {
             <Text style={styles.textoBotao}>Publicar</Text>
           </View>
 
-          <Text style={styles.perfil}>Dani</Text>
+          <Text style={styles.perfil}>{nome || 'Dani'}</Text>
           <Text style={styles.usuario}>@dani</Text>
         </View>
 
@@ -49,6 +55,7 @@ export default function TabOneScreen() {
         <View style={styles.meio}>
           <ScrollView
             style={styles.rolagem}
+            contentContainerStyle={styles.conteudoMeio}
             showsVerticalScrollIndicator={true}
           >
 
@@ -58,42 +65,71 @@ export default function TabOneScreen() {
               showsHorizontalScrollIndicator={false}
             >
               <View style={styles.abas}>
-                <Text style={styles.abaSelecionada}>
-                  Para você
-                </Text>
+                <TouchableOpacity
+                  onPress={() => router.replace('/')}
+                >
+                  <Text style={styles.aba}>Para você</Text>
+                </TouchableOpacity>
 
                 <Text style={styles.aba}>Seguindo</Text>
                 <Text style={styles.aba}>Esportes</Text>
                 <Text style={styles.aba}>Negócios</Text>
                 <Text style={styles.aba}>Tecnologia</Text>
 
-                <TouchableOpacity onPress={abrirDetalhes}>
-                  <Text style={styles.aba}>Travel</Text>
-                </TouchableOpacity>
+                <Text style={styles.abaSelecionada}>Travel</Text>
               </View>
             </ScrollView>
 
-            {/* PUBLICAÇÃO DO PATINHO */}
+            {/* PUBLICAÇÃO */}
             <View style={styles.publicacao}>
-
-              <Text style={styles.nome}>Dani</Text>
+              <Text style={styles.nome}>{nome || 'Dani'}</Text>
 
               <Text style={styles.usuarioPost}>
                 @dani · 1h
               </Text>
 
               <Text style={styles.texto}>
-                Sem comentariosss kkkkk
+                Locais que já conheci!!
               </Text>
 
-              {/* IMAGEM PELO LINK */}
-              <Image
-                source={{
-                  uri: 'https://pbs.twimg.com/media/HSyOz9aXkAAEW_d?format=jpg&name=small',
-                }}
-                style={styles.imagem}
-                resizeMode="cover"
-              />
+              {/* IMAGENS DA PUBLICAÇÃO */}
+              <View style={styles.imagens}>
+                <Image
+                  source={require('../assets/Chile.jpeg')}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+
+                <Image
+                  source={require('../assets/Chile1.jpeg')}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+
+                <Image
+                  source={require('../assets/Dubai1.jpeg')}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+
+                <Image
+                  source={require('../assets/Dubai2.jpg')}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+
+                <Image
+                  source={require('../assets/Italia1.jpeg')}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+
+                <Image
+                  source={require('../assets/Corretochile.png')}
+                  style={styles.imagem}
+                  resizeMode="cover"
+                />
+              </View>
 
               {/* AÇÕES */}
               <View style={styles.acoes}>
@@ -117,15 +153,12 @@ export default function TabOneScreen() {
                 <Text style={styles.acao}>📊</Text>
                 <Text style={styles.acao}>↗</Text>
               </View>
-
             </View>
-
           </ScrollView>
         </View>
 
         {/* COLUNA DIREITA */}
         <View style={styles.direita}>
-
           <View style={styles.pesquisa}>
             <Text style={styles.textoPesquisa}>
               🔍  Pesquisar
@@ -137,36 +170,29 @@ export default function TabOneScreen() {
               O que está acontecendo?
             </Text>
 
-            <Text style={styles.assunto}>Animais</Text>
-            <Text style={styles.assunto}>Patinhos</Text>
-            <Text style={styles.assunto}>Natureza</Text>
+            <Text style={styles.assunto}>Viagens</Text>
+            <Text style={styles.assunto}>Turismo</Text>
+            <Text style={styles.assunto}>Praias</Text>
 
-            <Text style={styles.mostrar}>
-              Mostrar mais
-            </Text>
+            <Text style={styles.mostrar}>Mostrar mais</Text>
           </View>
 
           <View style={styles.caixa}>
-            <Text style={styles.titulo}>
-              Quem seguir
-            </Text>
+            <Text style={styles.titulo}>Quem seguir</Text>
 
             <Text style={styles.assunto}>Natanael</Text>
             <Text style={styles.assunto}>Vicky</Text>
 
-            <Text style={styles.mostrar}>
-              Mostrar mais
-            </Text>
+            <Text style={styles.mostrar}>Mostrar mais</Text>
           </View>
-
         </View>
+
       </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-
   tela: {
     flex: 1,
     backgroundColor: 'black',
@@ -219,12 +245,18 @@ const styles = StyleSheet.create({
   },
 
   meio: {
-    flex: 1,
+    width: 500,
+    flexShrink: 0,
     height: '100%',
   },
 
   rolagem: {
     flex: 1,
+  },
+
+  conteudoMeio: {
+    flexGrow: 1,
+    paddingBottom: 30,
   },
 
   abas: {
@@ -270,11 +302,19 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
 
+  imagens: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 8,
+    marginTop: 10,
+  },
+
   imagem: {
-    width: '100%',
-    height: 350,
+    width: '48%',
+    height: 150,
     backgroundColor: '#222',
-    borderRadius: 15,
+    borderRadius: 12,
   },
 
   acoes: {
@@ -340,5 +380,4 @@ const styles = StyleSheet.create({
     color: '#1d9bf0',
     marginTop: 5,
   },
-
 });
