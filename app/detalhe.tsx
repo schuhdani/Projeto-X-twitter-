@@ -59,16 +59,16 @@ export default function Detalhe() {
           <TouchableOpacity
             onPress={() => router.replace('/')}
           >
-            <Text style={styles.menu}>🏠  Lar</Text>
+            <Text style={styles.menu}>🏠  Home</Text>
           </TouchableOpacity>
 
           <Text style={styles.menu}>🔎  Explore</Text>
-          <Text style={styles.menu}>🖤  Notificações</Text>
-          <Text style={styles.menu}>👤  Seguir</Text>
-          <Text style={styles.menu}>💬  Bate-papo</Text>
+          <Text style={styles.menu}>🖤  Notifications</Text>
+          <Text style={styles.menu}>👤  Follow</Text>
+          <Text style={styles.menu}>💬  Chat</Text>
           <Text style={styles.menu}>✨  Grok</Text>
-          <Text style={styles.menu}>👤  Perfil</Text>
-          <Text style={styles.menu}>...  Mais</Text>
+          <Text style={styles.menu}>👤  Profile</Text>
+          <Text style={styles.menu}>...  More</Text>
 
           <View style={styles.botao}>
             <Text style={styles.textoBotao}>
